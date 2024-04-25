@@ -1,0 +1,67 @@
+<h2>@if (product) { Editar }@else{ Nueva } producto</h2>
+<div class="row row-cols-3 justify-content-center">
+  @if (form) {
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="mb-3">
+      <label for="name">Nombre</label>
+      <input
+        id="name"
+        type="text"
+        class="form-control"
+        placeholder="Nombre"
+        formControlName="name"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="descripcion">Descripción</label>
+      <input
+        id="descripcion"
+        type="text"
+        class="form-control"
+        placeholder="Descripción"
+        formControlName="description"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="stock">Stock</label>
+      <input
+        id="stock"
+        type="text"
+        class="form-control"
+        placeholder="Stock"
+        formControlName="stock"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="descripcion">Precio</label>
+      <input
+        id="price"
+        type="text"
+        class="form-control"
+        placeholder="Precio"
+        formControlName="price"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="categoryId">Categoria</label>
+      <select class="form-select" formControlName="categoryId">
+        <option value="" disabled selected>Elija una categoria</option>
+        @for (category of categories; track category.id) {
+        <option [value]="category.id">{{ category?.name }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="text-end">
+      <button type="button" class="btn btn-danger" routerLink="/product">
+        Cancelar
+      </button>
+      <button class="btn btn-success">
+        @if (product) { Actualizar }@else{ Crear } producto
+      </button>
+    </div>
+  </form>
+  }
+</div>

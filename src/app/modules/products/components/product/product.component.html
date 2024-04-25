@@ -1,0 +1,48 @@
+<h2 class="mb-5">Productos</h2>
+
+<div class="py-3 text-end">
+  <button class="btn btn-success" [routerLink]="['new']">
+    <i class="fa-solid fa-circle-plus"></i>
+    Añadir producto
+  </button>
+</div>
+<table class="table table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Stock</th>
+      <th>Price</th>
+      <th>Categoria</th>
+      <th>Categoria descripción</th>
+
+      <th width="3%"></th>
+      <th width="3%"></th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    @for (product of products; track product.id) {
+    <tr>
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.description }}</td>
+      <td>{{ product.stock }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.category.name }}</td>
+      <td>{{ product.category.description }}</td>
+
+      <td class="text-end">
+        <button class="btn btn-primary" [routerLink]="[product.id, 'edit']">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+      </td>
+      <td class="text-end">
+        <button class="btn btn-danger" (click)="deleteProduct(product)">
+          <i class="fa-regular fa-trash-can"></i>
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>

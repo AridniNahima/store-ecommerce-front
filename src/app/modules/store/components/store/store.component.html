@@ -1,0 +1,44 @@
+<h2 class="mb-5">Tiendas</h2>
+
+<div class="py-3 text-end">
+  <button class="btn btn-success" [routerLink]="['new']">
+    <i class="fa-solid fa-circle-plus"></i>
+    Añadir tienda
+  </button>
+</div>
+<table class="table table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Dirección</th>
+      <th>Ciudad</th>
+      <th>Hora de apertura</th>
+
+      <th width="3%"></th>
+      <th width="3%"></th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    @for (store of stores; track store.id) {
+    <tr>
+      <td>{{ store.id }}</td>
+      <td>{{ store.name }}</td>
+      <td>{{ store.address }}</td>
+      <td>{{ store.city }}</td>
+      <td>{{ store.openingHours }}</td>
+
+      <td class="text-end">
+        <button class="btn btn-primary" [routerLink]="[store.id, 'edit']">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+      </td>
+      <td class="text-end">
+        <button class="btn btn-danger" (click)="deleteStore(store)">
+          <i class="fa-regular fa-trash-can"></i>
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>

@@ -1,0 +1,57 @@
+<h2>@if (store) { Editar }@else{ Nueva } tienda</h2>
+<div class="row row-cols-3 justify-content-center">
+  @if (form) {
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="mb-3">
+      <label for="name">Nombre</label>
+      <input
+        id="name"
+        type="text"
+        class="form-control"
+        placeholder="Nombre categoria"
+        formControlName="name"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="address">Dirección</label>
+      <input
+        id="address"
+        type="text"
+        class="form-control"
+        placeholder="Dirección"
+        formControlName="address"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="city">Ciudad</label>
+      <input
+        id="city"
+        type="text"
+        class="form-control"
+        placeholder="Ciudad"
+        formControlName="city"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="openingHours">Hora de apertura</label>
+      <input
+        id="openingHours"
+        type="text"
+        class="form-control"
+        placeholder="Hora"
+        formControlName="openingHours"
+      />
+    </div>
+
+    <div class="text-end">
+      <button type="button" class="btn btn-danger" routerLink="/store">
+        Cancelar
+      </button>
+      <button class="btn btn-success">
+        @if (store) { Actualizar }@else{ Crear } tienda
+      </button>
+    </div>
+  </form>
+  }
+</div>

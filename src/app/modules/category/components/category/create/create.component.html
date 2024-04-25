@@ -1,0 +1,35 @@
+<h2>@if (category) { Editar }@else{ Nueva } categoria</h2>
+<div class="row row-cols-3 justify-content-center">
+  @if (form) {
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="mb-3">
+      <label for="name">Nombre</label>
+      <input
+        id="name"
+        type="text"
+        class="form-control"
+        placeholder="Nombre categoria"
+        formControlName="name"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="descripcion">Descripción</label>
+      <input
+        id="descripcion"
+        type="text"
+        class="form-control"
+        placeholder="Descripción categoria"
+        formControlName="description"
+      />
+    </div>
+    <div class="text-end">
+      <button type="button" class="btn btn-danger" routerLink="/category">
+        Cancelar
+      </button>
+      <button class="btn btn-success">
+        @if (category) { Actualizar }@else{ Crear } categoria
+      </button>
+    </div>
+  </form>
+  }
+</div>
