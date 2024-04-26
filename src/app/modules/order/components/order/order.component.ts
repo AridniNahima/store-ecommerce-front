@@ -2,6 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Order } from '../../../../shared/modules/order.model';
 import { OrderService } from '../../services/order.service';
+import { Store } from '../../../../shared/modules/store.model';
+import { StoreService } from '../../../store/services/store.service';
 
 
 @Component({
@@ -16,6 +18,7 @@ import { OrderService } from '../../services/order.service';
 export class OrderComponent implements OnInit {
 
   private orderService = inject(OrderService);
+
   orders: Order[] = [];
 
   ngOnInit(): void {
@@ -29,8 +32,9 @@ export class OrderComponent implements OnInit {
       });
   }
 
-  deleteOrder(category: Order) {
-    this.orderService.delete(category.id)
+
+  deleteOrder(order: Order) {
+    this.orderService.delete(order.id)
       .subscribe(() => {
         this.loadAll();
       });

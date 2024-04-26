@@ -1,4 +1,4 @@
-<h2>@if (order) { Editar }@else{ Nueva } orden</h2>
+<h2>@if (order) { Editar }@else{ Nueva } pedido</h2>
 <div class="row row-cols-3 justify-content-center">
   @if (form) {
   <form [formGroup]="form" (ngSubmit)="save()">
@@ -10,17 +10,29 @@
         class="form-control"
         placeholder="Nombre"
         formControlName="name"
+        readonly
       />
     </div>
     <div class="mb-3">
       <label for="date">Fecha</label>
       <input
         id="date"
-        type="text"
+        type="datetime"
         class="form-control"
-        placeholder="Fecha"
         formControlName="date"
+        readonly
       />
+    </div>
+
+    <div class="form-check">
+      <input
+        id="delivery"
+        type="checkbox"
+        class="form-check-input"
+        formControlName="delivery"
+      />
+
+      <label for="delivery"> Delivery </label>
     </div>
 
     <div class="mb-3">
@@ -31,16 +43,6 @@
         class="form-control"
         placeholder="Dirección"
         formControlName="shippingAddress"
-      />
-    </div>
-    <div class="mb-3">
-      <label for="delivery">Delivery</label>
-      <input
-        id="delivery"
-        type="text"
-        class="form-control"
-        placeholder="Delivery"
-        formControlName="delivery"
       />
     </div>
 
